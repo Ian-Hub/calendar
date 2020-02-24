@@ -1,0 +1,49 @@
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+
+	 
+  startDate = new Date("2020-01-08"),
+  endDate = new Date;
+
+	 var getDateArray = function(start, end) {
+    var arr = new Array();
+    var dt = new Date(start);
+    while (dt <= end) {
+        arr.push(new Date(dt));
+        dt.setDate(dt.getDate() + 1);
+    }
+    return arr;
+}
+
+var dateArr = getDateArray(startDate, endDate);
+
+
+		
+		
+$(document).ready(function(){
+  $("button").click(function(){
+	  
+	for (var i = 0; i < dateArr.length; i++) {
+      $(".fc-list-heading[data-date=" + dateArr[i].toLocaleDateString('en-CA') + "]").addClass("past-pay");
+}  
+	  
+  });
+});
+</script>	
+<style>
+	.fc-event-container{
+		display: none;
+	}
+
+	.fc-past {
+    background-color: rgba(0,0,0,0.05);
+}
+	.fc-list-heading-alt, .fc-list-item{
+		display: none;
+	}
+
+	.past-pay{
+		background-color: rgba(208,234,177,1.00) !important;
+	}
+
+</style>
